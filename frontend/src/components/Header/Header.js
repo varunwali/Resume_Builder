@@ -1,12 +1,14 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import resumeSvg from "../../assets/resume_svg.svg";
 import styles from "./Header.module.css";
 import { Context } from "../../index";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
 import axios from "axios";
 
 function Header() {
+  const [isopen, setisOpen] = useState(false);
   const { isAuthorized, setIsAuthorized } = useContext(Context);
   const navigateTo = useNavigate();
 
@@ -26,11 +28,22 @@ function Header() {
       setIsAuthorized(true);
     }
   };
+
+  const handleisOpen = () => {
+    setisOpen((open) => !open);
+  };
+
   return (
     <div className={styles.header}>
-      <div className={styles.navConatiner}>
+      <div className={styles.navcontainer}>
         <nav className={styles.navbar}>
-          <ul className={styles.list}>
+          <div className={styles.logo}>
+            <h3>Resume Builder</h3>
+          </div>
+          <div className={styles.navmenu}>
+            <GiHamburgerMenu className={styles.icon} onClick={handleisOpen} />
+          </div>
+          <ul className={`${styles.list} ${isopen ? styles.is_open : ""}`}>
             <li>
               <Link className={styles.navlink} to={"/login"}>
                 Login
@@ -44,6 +57,7 @@ function Header() {
           </ul>
         </nav>
       </div>
+
       <div className={styles.container}>
         <div className={styles.left}>
           <p className={styles.heading}>
