@@ -24,7 +24,7 @@ const Signup = () => {
     try {
       setIsLoading(true); // Start showing loader
       const { data } = await axios.post(
-        `${window.location.origin}/api/v1/user/signup`,
+        "https://resume-builder-psi-seven.vercel.app/api/v1/user/signup",
         { name, phone, email, password },
         {
           headers: {

@@ -15,7 +15,7 @@ function Header() {
   const handleLogout = async () => {
     try {
       const response = await axios.get(
-        `${window.location.origin}/api/v1/user/logout`,
+        "https://resume-builder-psi-seven.vercel.app/api/v1/user/logout",
         {
           withCredentials: true, //like token,cookies etc
         }

@@ -20,7 +20,7 @@ const Login = () => {
     try {
       setIsLoading(true);
       const { data } = await axios.post(
-        `${window.location.origin}/api/v1/user/login`,
+        "https://resume-builder-psi-seven.vercel.app/api/v1/user/login",
         { email, password },
         {
           headers: {
